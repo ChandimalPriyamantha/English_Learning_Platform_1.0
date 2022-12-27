@@ -19,37 +19,37 @@
         <!-- place navbar here -->
     </header>
     <main>
-      
-       <div class="login">
-           <h1>Login</h1>
-           <form>
-            <div class="form-group">
-                <label for="email">Email address</label>
-                <input type="email" id="email">
-            </div>
-            <div class="form-group">
-                
-                <label for="password">Password</label>
-                <input type="password" id="password">
-            </div>
-            <div class="form-group">
-              <input type="checkbox" id="check">
-              <label for="check">Remember me</label>
 
-             
+        <div class="login">
+            <h1>Login</h1>
+            <form>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email">
+                </div>
+                <div class="form-group">
 
-            </div>
-            <div>
-            <input type="submit" value="Login">
-            </div>
+                    <label for="password">Password</label>
+                    <input type="password" id="password">
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="check">
+                    <label for="check">Remember me</label>
 
-           </form>
-       </div>
+
+
+                </div>
+                <div>
+                    <input type="submit" value="Login">
+                </div>
+
+            </form>
+        </div>
 
     </main>
     <footer>
         <!-- place footer here -->
-        
+
     </footer>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
