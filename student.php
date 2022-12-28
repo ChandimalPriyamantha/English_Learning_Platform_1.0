@@ -20,57 +20,49 @@
     </header>
     <main>
 
-    
-            
-            
+
         <div class="login">
-        <h1 class="text-center">Login</h1>
-            
-            <!-- ======================== Display error message and success message  ================================== -->
-            <?php if (isset($_GET['error'])) { ?>
-
-                <div class="alert alert-danger">
-                    <p><?php echo $_GET['error']; ?></p>
-                </div>
-            <?php } ?>
-
-            <?php if (isset($_GET['success'])) { ?>
-
-                <div class="alert alert-success">
-                    <p><?php echo $_GET['success']; ?></p>
-                </div>
-
-
-            <?php } ?>
-            <!-- ======================== Display error message and success message  ================================== -->
-            <form class="needs-validation" action="check-php/check-login.php" method="POST">
+            <h1 class="text-center">Login</h1>
+            <form class="needs-validation">
                 <div class="form-group was-validated">
                     <label class="form-group" for="email">Email address</label>
+                    <input class="form-control" type="email" id="email" name="email" >
+                    <div class="invalid-feedback">
+                        Please enter your email address
+
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <label class="form-group" for="password">Password</label>
+                    <input class="form-control" type="password" id="password" name="password" >
+                    <div class="invalid-feedback">
+                        Please enter your password
+
+                    </div>
+                </div>
+               
+                <div class="form-group was-validated">
+                    <label class="form-group" for="email">Teacher ID</label>
                     <input class="form-control" type="email" id="email" name="email">
+                    <div class="invalid-feedback">
+                        Please enter your email address
 
+                    </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group form-check">
+                    <input class="form-check-input" type="checkbox" id="check" name="check">
+                    <label class="form-check-label" for="check">Remember me</label>
 
-                    <label class="form-group"  for="password">Password</label>
-                    <a href="forgot.php" class="float-right">
-											Forgot Password?
-										</a>
-                    <input class="form-control" type="password" id="password" name="password">
 
-                </div>
-                <div class="form-group">
-                    <label class="form-group" for="inputState">Select User Type</label>
-                    <select id="inputState" class="form-control" name="role">
-                        <option selected value="admin">Admin</option>
 
-                    </select>
                 </div>
                 <div class="mt-2 text-center">
                     Don't have an account? <a href="register.php">Create One</a>
                 </div>
 
                 <div>
-                    <input class="btn btn-success w-100 " type="submit" value="Login">
+                    <input class="btn btn-success w-100" type="submit" value="Login">
                 </div>
 
             </form>
@@ -80,7 +72,6 @@
     </main>
     <footer>
         <!-- place footer here -->
-
 
     </footer>
     <!-- Bootstrap JavaScript Libraries -->
