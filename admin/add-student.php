@@ -154,158 +154,133 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_type'])) {
         <!-- offcanvas -->
         <main class="mt-5 pt-3">
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h4>Dashboard</h4>
+                <h4>Add Students</h4>
+                <div class="card ">
+                    <div class="card-header bg-success text-white">
+                        Featured
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 mb-3">
-                        <div class="card bg-success text-white h-100">
-                            <div class="card-body py-5"><h5><i class="bi bi-pen me-2"></i> Completed: 8</h5></div>
-                            <div class="card-footer d-flex">
-                                Created Writting Tasks: 2
-                                <span class="ms-auto">
-                                    <i class="bi bi-chevron-right"></i>
+                    <div class="card-body bg-light">
+                        <h5 class="card-title">Create account for your students</h5>
+                        <p class="card-text">First of all, you should add the students into your class room. You can clik 
+                            add student button to create account for your students.
+                        </p>
+
+                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#layout">
+                            <span class="me-2"><i class="bi bi-person-plus me-1"></i></span>
+                            <span>Add Students </span>
+                            <span class="ms-auto">
+                                <span class="right-icon">
+                                    <i class="bi bi-chevron-down"></i>
                                 </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <div class="card bg-success text-white h-100">
-                            <div class="card-body py-5" ><h5><i class="bi bi-megaphone me-2"></i>Completed: 2</h5></div>
-                            <div class="card-footer d-flex">
-                                Created Spoken Tasks: 2
-                                <span class="ms-auto">
-                                    <i class="bi bi-chevron-right"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <div class="card bg-success text-white h-100">
-                            <div class="card-body py-5"><h5><i class="bi bi-file-earmark-music me-2"></i> Completed: 1</h5></div>
-                            <div class="card-footer d-flex">
-                                Created Listening Tasks: 2
-                                <span class="ms-auto">
-                                    <i class="bi bi-chevron-right"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <div class="card bg-success text-white h-100">
-                            <div class="card-body py-5"><h5><i class="bi bi-bookmark-dash me-2"></i> Completed: 7</h5></div>
-                            <div class="card-footer d-flex">
-                                Created Reading Tasks: 2
-                                <span class="ms-auto">
-                                    <i class="bi bi-chevron-right"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <div class="card h-100">
-                            <div class="card-header">
-                                <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
-                                Area Chart Example
-                            </div>
-                            <div class="card-body">
-                                <canvas class="chart" width="400" height="200"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <div class="card h-100">
-                            <div class="card-header">
-                                <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
-                                Area Chart Example
-                            </div>
-                            <div class="card-body">
-                                <canvas class="chart" width="400" height="200"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 mb-3">
-                        <div class="card">
-                            <div class="card-header bg-success text-white ">
-                                <span ><i class="bi bi-table me-2"></i></span> Data Table
-                                <span class="me-10"> | Total Students:
-                                    <?php
+                            </span>
+                        </a>
+                        <div class="collapse" id="layout">
+                            <section class="vh-100 gradient-custom">
+                                <div class="container py-5 h-100">
+                                    <div class="row justify-content-center align-items-center h-100">
+                                        <div class="col-12 col-lg-9 col-xl-7">
+                                            <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                                                <div class="card-body p-4 p-md-5">
+                                                    <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+                                                    <form>
 
-                                    include '../check-php/connection.php';
-                                    $sql = "SELECT * FROM user_details where User_Type='user'";
-                                    $result = mysqli_query($conn, $sql);
-                                    $rows_count_value = mysqli_num_rows($result);
-                                    echo $rows_count_value;
-                                    mysqli_close($conn);
-                                    ?>
-                                </span>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table id="example" class="table table-striped data-table" style="width: 100%">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">ID</th>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">Email</th>
-                                                <th scope="col">Address</th>
-                                                <th scope="col">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
+                                                        <div class="row">
+                                                            <div class="col-md-6 mb-4">
 
-                                            <?php
-                                            include '../check-php/connection.php';
-                                            $sql = "SELECT * FROM user_details where User_Type='user'";
-                                            $result = mysqli_query($conn, $sql);
+                                                                <div class="form-group">
+                                                                    <input type="text" id="firstName" class="form-control form-control-lg" />
+                                                                    <label class="form-label" for="firstName">First Name</label>
+                                                                </div>
 
-                                            if (mysqli_num_rows($result) > 0) {
-                                                // output data of each row
-                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                            </div>
+                                                            <div class="col-md-6 mb-4">
 
-                                                    $id = $row["ID"];
-                                                    $name = $row["Name"];
-                                                    $email = $row["Email"];
-                                                    $address = $row["Address"];
+                                                                <div class="form-group">
+                                                                    <input type="text" id="lastName" class="form-control form-control-lg" />
+                                                                    <label class="form-label" for="lastName">Last Name</label>
+                                                                </div>
 
+                                                            </div>
+                                                        </div>
 
-                                            ?>
-                                                    <tr>
-                                                        <td><?php echo $id ?> </td>
-                                                        <td><?php echo $name ?></td>
-                                                        <td><?php echo $email ?></td>
-                                                        <td><?php echo $address ?></td>
+                                                        <div class="row">
+                                                            <div class="col-md-6 mb-4 d-flex align-items-center">
 
-                                                <?php }
-                                            } else {
-                                                echo "<tr>";
-                                                echo "0 results";
-                                                echo "</tr>";
-                                            }
-                                            mysqli_close($conn);
+                                                                <div class="form-group datepicker w-100">
+                                                                    <input type="date" class="form-control form-control-lg" id="birthdayDate" />
+                                                                    <label for="birthdayDate" class="form-label">Birthday</label>
+                                                                </div>
 
-                                                ?>
+                                                            </div>
+                                                            <div class="col-md-6 mb-4">
 
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th scope="col">ID</th>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">Email</th>
-                                                <th scope="col">Address</th>
-                                                <th scope="col">Action</th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
+                                                                <h6 class="mb-2 pb-1">Gender: </h6>
+
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender" value="option1" checked />
+                                                                    <label class="form-check-label" for="femaleGender">Female</label>
+                                                                </div>
+
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender" value="option2" />
+                                                                    <label class="form-check-label" for="maleGender">Male</label>
+                                                                </div>
+
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender" value="option3" />
+                                                                    <label class="form-check-label" for="otherGender">Other</label>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-6 mb-4 pb-2">
+
+                                                                <div class="form-outline">
+                                                                    <input type="email" id="emailAddress" class="form-control form-control-lg" />
+                                                                    <label class="form-label" for="emailAddress">Email</label>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="col-md-6 mb-4 pb-2">
+
+                                                                <div class="form-outline">
+                                                                    <input type="tel" id="phoneNumber" class="form-control form-control-lg" />
+                                                                    <label class="form-label" for="phoneNumber">Phone Number</label>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-12">
+
+                                                                <select class="select form-control-lg">
+                                                                    <option value="1" disabled>Choose option</option>
+                                                                    <option value="2">Subject 1</option>
+                                                                    <option value="3">Subject 2</option>
+                                                                    <option value="4">Subject 3</option>
+                                                                </select>
+                                                                <label class="form-label select-label">Choose option</label>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="mt-4 pt-2">
+                                                            <button class="btn btn-primary btn-lg w-100" type="submit"><i class="bi bi-person-plus me-2"></i>Create Account</button>
+
+                                                        </div>
+
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </section>
                         </div>
+
                     </div>
                 </div>
             </div>

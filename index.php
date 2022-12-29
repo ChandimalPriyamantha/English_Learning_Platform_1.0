@@ -20,12 +20,12 @@
     </header>
     <main>
 
-    
-            
-            
+
+
+
         <div class="login">
-        <h1 class="text-center">Login</h1>
-            
+            <h1 class="text-center">Login</h1>
+
             <!-- ======================== Display error message and success message  ================================== -->
             <?php if (isset($_GET['error'])) { ?>
 
@@ -51,10 +51,10 @@
                 </div>
                 <div class="form-group">
 
-                    <label class="form-group"  for="password">Password</label>
+                    <label class="form-group" for="password">Password</label>
                     <a href="forgot.php" class="float-right">
-											Forgot Password?
-										</a>
+                        Forgot Password?
+                    </a>
                     <input class="form-control" type="password" id="password" name="password">
 
                 </div>
@@ -81,7 +81,12 @@
     <footer>
         <!-- place footer here -->
 
-
+        <div class="fixed-bottom">
+            <div class="text-center p-3 bg-success text-white">
+                © 2020 Copyright:
+                <a class="text-white" href="#">Chandimal Priyamantha</a>
+            </div>
+        </div>
     </footer>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
