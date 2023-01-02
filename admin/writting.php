@@ -154,10 +154,25 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_type'])) {
         <!-- offcanvas -->
         <main class="mt-5 pt-3">
             <div class="container-fluid">
-            <h4>Writting Tasks</h4>
+                <h4>Writting Tasks</h4>
+                <?php if (isset($_GET['error'])) { ?>
+                    <div class="alert alert-danger">
+                        <p><?php echo $_GET['error'] ?></p>
+                    </div>
+                <?php } ?>
+                <?php if (isset($_GET['success'])) { ?>
+                    <div class="alert alert-success">
+                        <p><?php echo $_GET['success'] ?></p>
+                    </div>
+                <?php } ?>
+
+                
+
                 <div class="card">
                     <div class="card-header bg-success text-white">
+
                         Featured
+
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Create Writting Tasks</h5>
@@ -185,19 +200,28 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_type'])) {
                                                         <u>My Writting Tasks</u>
                                                     </p>
 
-                                                    <div class="pb-2">
-                                                        <div class="card">
-                                                            <div class="card-body">
-                                                                <div class="d-flex flex-row align-items-center">
-                                                                    <input type="text" class="form-control form-control-lg me-2" id="exampleFormControlInput1" placeholder="Add new...">
-                                                                    <a href="#!" data-mdb-toggle="tooltip" title="Set due date"><i class="bi bi-calendar-check  me-3"></i></a>
-                                                                    <div>
-                                                                        <button type="button" class="btn btn-primary">Add</button>
+                                                    <form method="post" action="core-php/core_writting.php">
+                                                        <div class="pb-2">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <div class="d-flex flex-row align-items-center">
+
+                                                                        <input type="text" class="form-control form-control-lg me-2" id="exampleFormControlInput1" placeholder="Add new..." name="writting_task">
+
+                                                                        <input type="date" class="form-control form-control-lg me-2" id="exampleFormControlInput1" name="date">
+
+                                                                        <input type="time" class="form-control form-control-lg me-2" id="exampleFormControlInput1" name="time">
+
+                                                                        <div>
+                                                                            <input type="submit" value="Add" class="btn btn-success">
+
+                                                                        </div>
+
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </form>
 
                                                     <hr class="my-4">
 
@@ -216,8 +240,42 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_type'])) {
                                                         </select>
                                                         <a href="#!" style="color: #23af89;" data-mdb-toggle="tooltip" title="Ascending"><i class="fas fa-sort-amount-down-alt ms-2"></i></a>
                                                     </div>
+                                                    <div class="table-responsive">
+                                                        <table id="example" class="table table-striped data-table" style="width: 100%">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col">ID</th>
+                                                                    <th scope="col">Task Details</th>
+                                                                    <th scope="col">Created Date</th>
+                                                                    <th scope="col">Due Date & Time</th>
+                                                                    <th scope="col">State</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>1</td>
+                                                                    <td>My Country My Country My Country My Country My Country My Country My Country</td>
+                                                                    <td><i class="fas fa-info-circle me-2">02/01/2023</i></td>
 
-                                                    <ul class="list-group list-group-horizontal rounded-0 bg-transparent">
+                                                                    <td class="text-white"><i class="py-1 px-1 me-1 border border-warning rounded-3 d-flex align-items-center bg-success">10/01/2023 12:00 AM</i></td>
+
+                                                                    <td>Active</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>2</td>
+                                                                    <td>My Country My Country</td>
+                                                                    <td><i class="fas fa-info-circle me-2">02/01/2023</i></td>
+
+                                                                    <td class="text-white"><i class="py-1 px-1 me-1 border border-warning rounded-3 d-flex align-items-center bg-success">10/01/2023 12:00 AM</i></td>
+
+                                                                    <td>Active</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+
+                                                    <!--<ul class="list-group list-group-horizontal rounded-0 bg-transparent">
                                                         <li class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
                                                             <div class="form-check">
                                                                 <input class="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked1" aria-label="..." checked />
@@ -289,20 +347,27 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_type'])) {
                                                                 </a>
                                                             </div>
                                                         </li>
-                                                    </ul>
+                                                    </ul> -->
 
                                                 </div>
+
                                             </div>
+
                                         </div>
+
                                     </div>
+
                                 </div>
+
                             </section>
+
                         </div>
 
                     </div>
                 </div>
             </div>
         </main>
+
         <script src="./js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>
         <script src="./js/jquery-3.5.1.js"></script>

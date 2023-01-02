@@ -156,7 +156,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_type'])) {
 
 <?php
 } else {
-    header("Location: ../index.php");
+    header("Location: index.php");
     exit();
 }
 ?>
