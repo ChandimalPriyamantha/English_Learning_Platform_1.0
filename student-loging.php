@@ -23,10 +23,28 @@
 
         <div class="login">
             <h1 class="text-center">Login</h1>
-            <form class="needs-validation">
+            <!-- ======================== Display error message and success message  ================================== -->
+            <?php if (isset($_GET['error'])) { ?>
+
+                <div class="text-danger">
+                    <p><?php echo $_GET['error']; ?></p>
+                </div>
+            <?php } ?>
+
+            <?php if (isset($_GET['success'])) { ?>
+
+                <div class="text-success">
+                    <p><?php echo $_GET['success']; ?></p>
+                </div>
+
+
+            <?php } ?>
+            <!-- ======================== Display error message and success message  ================================== -->
+            <form method="POST" action="check-php/check-student-login.php">
+            
                 <div class="form-group was-validated">
                     <label class="form-group" for="email">Email address</label>
-                    <input class="form-control" type="email" id="email" name="email" >
+                    <input class="form-control" type="email" id="email" name="email">
                     <div class="invalid-feedback">
                         Please enter your email address
 
@@ -35,16 +53,16 @@
                 <div class="form-group">
 
                     <label class="form-group" for="password">Password</label>
-                    <input class="form-control" type="password" id="password" name="password" >
+                    <input class="form-control" type="password" id="password" name="password">
                     <div class="invalid-feedback">
                         Please enter your password
 
                     </div>
                 </div>
-               
+           
                 <div class="form-group was-validated">
                     <label class="form-group" for="email">Teacher ID</label>
-                    <input class="form-control" type="email" id="email" name="email">
+                    <input class="form-control" type="email" id="email" name="teacher_email">
                     <div class="invalid-feedback">
                         Please enter your email address
 
@@ -58,7 +76,7 @@
 
                 </div>
                 <div class="mt-2 text-center">
-                    Don't have an account? <a href="register.php">Create One</a>
+                    Welcome Language Traning Platform.
                 </div>
 
                 <div>
@@ -72,6 +90,12 @@
     </main>
     <footer>
         <!-- place footer here -->
+        <div class="fixed-bottom">
+            <div class="text-center p-3 bg-success text-white">
+                © 2020 Copyright:
+                <a class="text-white" href="#">Chandimal Priyamantha</a>
+            </div>
+        </div>
 
     </footer>
     <!-- Bootstrap JavaScript Libraries -->

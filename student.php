@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (isset($_SESSION['id']) && isset($_SESSION['user_type'])) {
+if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 
 ?>
 
@@ -55,7 +55,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_type'])) {
                                 <li><a class="dropdown-item" href="#">Profile</a></li>
                                 <li><a class="dropdown-item" href="#">Aboute</a></li>
                                 <li>
-                                    <a class="dropdown-item" href="../check-php/logout.php">Log out</a>
+                                    <a class="dropdown-item" href="check-php/student-logout.php">Log out</a>
                                 </li>
                             </ul>
                         </li>
@@ -85,52 +85,121 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_type'])) {
                                 <a class="nav-link text-white" href="#">Listening</a>
                             </li>
                             <li class=" d-flex ms-auto my-3 my-lg-0">
-                                <a class="nav-link text-white fw-bold" href="#"><i class="bi bi-envelope me-2"></i>Dr.Subash's class room</a>
+                                <a class="nav-link text-white fw-bold" href="#"><i class="bi bi-envelope me-2"></i>
+                                    <?php
+                                    include 'check-php/connection.php';
+                                    $username = $_SESSION['TID'];
+                                    $sql = "SELECT Name FROM user_details WHERE Email='$username'";
+                                    $result = mysqli_query($conn, $sql);
+                                    $row = mysqli_fetch_assoc($result);
+                                    mysqli_close($conn);
+
+
+                                    echo $row['Name']  ?>'s class room</a>
                             </li>
 
                         </ul>
                     </div>
                     <div class="card-body bg-light">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        
+                        <h5 class="card-title">Writting Task Panale</h5>
+                        <p class="card-text">You can practice writting using this platform.</p>
+
 
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="card">
                                     <div class="card-body">
-                                    <form method="get">
-                                    <textarea name="content" id="summernote"></textarea>
-                                    
-                                        <script>
-                                            $('#summernote').summernote({
-                                                placeholder: 'Write your answer here.',
-                                                tabsize: 2,
-                                                height: 300,
-                                                toolbar: [
-                                                    ['style', ['style']],
-                                                    ['font', ['bold', 'underline', 'clear']],
-                                                    ['color', ['color']],
-                                                    ['para', ['ul', 'ol', 'paragraph']],
-                                                    ['table', ['table']],
-                                                    ['insert', ['link', 'picture', 'video']],
+                                        <form method="get">
+                                            <textarea name="content" id="summernote"></textarea>
 
-                                                ]
-                                            });
-                                        </script>
+                                            <script>
+                                                $('#summernote').summernote({
+                                                    placeholder: 'Write your answer here.',
+                                                    tabsize: 2,
+                                                    height: 300,
+                                                    toolbar: [
+                                                        ['style', ['style']],
+                                                        ['font', ['bold', 'underline', 'clear']],
+                                                        ['color', ['color']],
+                                                        ['para', ['ul', 'ol', 'paragraph']],
+                                                        ['table', ['table']],
+                                                        ['insert', ['link', 'picture', 'video']],
+
+                                                    ]
+                                                });
+                                            </script>
                                     </div>
                                     <input type="submit" value="Clike to subbmit your answer" class="btn btn-success start-0">
-                                    
+
                                 </div>
                                 </form>
                             </div>
-                            
+
                             <div class="col-sm-6">
                                 <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="card-title">Tasks Display Dashbord</h5>
+
+                                    </div>
                                     <div class="card-body">
-                                        <h5 class="card-title">Special title treatment</h5>
-                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                        <a href="#" class="btn btn-primary ">Go somewhere</a>
+
+
+
+                                        <div class="table-responsive">
+                                            <table id="example" class="table table-striped data-table" style="width: 100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">ID</th>
+                                                        <th scope="col">Task Details</th>
+                                                        <th scope="col">Due Date & Time</th>
+                                                        <th scope="col">State</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    include 'check-php/connection.php';
+                                                    $email_id =  $_SESSION['TID'];
+                                                    $_SESSION['SUBMIT'] = "Not Sumited";
+                                                    $submition = $_SESSION['SUBMIT'];
+                                                    $sql = "SELECT * FROM wrtting_task where Email_ID='$email_id' and State='Active'";
+                                                    $result = mysqli_query($conn, $sql);
+
+                                                    if (mysqli_num_rows($result) > 0) {
+                                                        // output data of each row
+                                                        while ($row = mysqli_fetch_assoc($result)) {
+
+                                                            $id = $row["ID"];
+                                                            $Task_Details = $row["Task_Details"];
+                                                            $Created_date_time = $row["Created_date_time"];
+                                                            $due_date = $row["Due_date"];
+                                                            $due_time = $row['Due_time'];
+                                                            $state = $row['State'];
+
+
+                                                    ?>
+                                                            <tr>
+                                                                <td><?php echo $id ?> </td>
+                                                                <td><?php echo $Task_Details ?></td>
+
+
+                                                                <td class="py-2 px-3 me-2 border border-warning rounded-3 d-flex align-items-center bg-warning text-danjer"><?php echo $due_date . ' ' . $due_time ?></td>
+
+                                                                <td class="text-success"><?php echo  $submition  ?></td>
+
+
+                                                        <?php }
+                                                    } else {
+                                                        echo "<tr>";
+                                                        echo "0 results";
+                                                        echo "</tr>";
+                                                    }
+                                                    mysqli_close($conn);
+
+                                                        ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -156,7 +225,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_type'])) {
 
 <?php
 } else {
-    header("Location: index.php");
+    header("Location: student-loging.php");
     exit();
 }
 ?>

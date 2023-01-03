@@ -162,7 +162,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_type'])) {
                 <div class="row">
                     <div class="col-md-3 mb-3">
                         <div class="card bg-success text-white h-100">
-                            <div class="card-body py-5"><h5><i class="bi bi-pen me-2"></i> Completed: 8</h5></div>
+                            <div class="card-body py-5">
+                                <h5><i class="bi bi-pen me-2"></i> Completed: 8</h5>
+                            </div>
                             <div class="card-footer d-flex">
                                 Created Writting Tasks: 2
                                 <span class="ms-auto">
@@ -173,7 +175,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_type'])) {
                     </div>
                     <div class="col-md-3 mb-3">
                         <div class="card bg-success text-white h-100">
-                            <div class="card-body py-5" ><h5><i class="bi bi-megaphone me-2"></i>Completed: 2</h5></div>
+                            <div class="card-body py-5">
+                                <h5><i class="bi bi-megaphone me-2"></i>Completed: 2</h5>
+                            </div>
                             <div class="card-footer d-flex">
                                 Created Spoken Tasks: 2
                                 <span class="ms-auto">
@@ -184,7 +188,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_type'])) {
                     </div>
                     <div class="col-md-3 mb-3">
                         <div class="card bg-success text-white h-100">
-                            <div class="card-body py-5"><h5><i class="bi bi-file-earmark-music me-2"></i> Completed: 1</h5></div>
+                            <div class="card-body py-5">
+                                <h5><i class="bi bi-file-earmark-music me-2"></i> Completed: 1</h5>
+                            </div>
                             <div class="card-footer d-flex">
                                 Created Listening Tasks: 2
                                 <span class="ms-auto">
@@ -195,7 +201,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_type'])) {
                     </div>
                     <div class="col-md-3 mb-3">
                         <div class="card bg-success text-white h-100">
-                            <div class="card-body py-5"><h5><i class="bi bi-bookmark-dash me-2"></i> Completed: 7</h5></div>
+                            <div class="card-body py-5">
+                                <h5><i class="bi bi-bookmark-dash me-2"></i> Completed: 7</h5>
+                            </div>
                             <div class="card-footer d-flex">
                                 Created Reading Tasks: 2
                                 <span class="ms-auto">
@@ -233,7 +241,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_type'])) {
                     <div class="col-md-12 mb-3">
                         <div class="card">
                             <div class="card-header bg-success text-white ">
-                                <span ><i class="bi bi-table me-2"></i></span> Data Table
+                                <span><i class="bi bi-table me-2"></i></span> Data Table
                                 <span class="me-10"> | Total Students:
                                     <?php
 
@@ -281,6 +289,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_type'])) {
                                                         <td><?php echo $name ?></td>
                                                         <td><?php echo $email ?></td>
                                                         <td><?php echo $address ?></td>
+                                                        <td><a href="#!" class="text-info" data-mdb-toggle="tooltip" title="Edit Task"><i class="bi bi-pencil"></i></a>
+                                                            <a href="#!" class="text-danger" data-mdb-toggle="tooltip" title="Delete Task"><i class="bi bi-trash2"></i></a>
+                                                        </td>
 
                                                 <?php }
                                             } else {

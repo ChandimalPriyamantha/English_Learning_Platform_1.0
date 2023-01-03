@@ -3,7 +3,7 @@ session_start();
 include 'connection.php';
 
 if(isset($_POST['email']) && isset($_POST['password'])
- && isset($_POST['role'])){
+ && isset($_POST['teacher_email'])){
 
    
 
@@ -17,16 +17,22 @@ if(isset($_POST['email']) && isset($_POST['password'])
     
     $username = test_input($_POST['email']);
     $password = test_input($_POST['password']);
-    $role = test_input($_POST['role']);
+    
+    $_SESSION['TID'] = test_input($_POST['teacher_email']);
+    $Teacher_ID = $_SESSION['TID'];
+    
+    $role = 'user';
 
     if (empty($username)){
-      header("Location: ../index.php?error=Email is Required");
+      header("Location: ../student-loging.php?error=Email is Required");
       exit();
     }else if(empty($password)){
-      header("Location: ../index.php?error=Password is Required");
+      header("Location: ../student-loging.php?error=Password is Required");
       exit();
+    }else if(empty($Teacher_ID)){
+        header("Location: ../student-loging.php?error=Teacher ID is Required");
     }else{
-      // hashing the password
+         // hashing the password
       $pass = md5($password);
 
       $sql = "SELECT * FROM user_details WHERE Email='$username' AND Password='$pass' AND User_Type='$role'";
@@ -43,7 +49,7 @@ if(isset($_POST['email']) && isset($_POST['password'])
                   $_SESSION['name'] = $row['Name'];
                   $_SESSION['id'] = $row['ID'];
                  
-                  header("Location: ../admin/user.php");
+                  header("Location: ../student.php");
                   exit();
 
 
@@ -62,16 +68,16 @@ if(isset($_POST['email']) && isset($_POST['password'])
                 }
                 
               }else{
-          header("Location: ../index.php?error=Incorect User name or password or User Type");
+          header("Location: ../student-loging.php?error=Incorect User name or password or User Type");
               exit();
         }
       }else{
-        header("Location: ../index.php?error=Incorect User name or password or User Type");
+        header("Location: ../student-loging.php?error=Incorect User name or password or User Type");
             exit();
       }
     }
 
  }else{
 
-    header("Location: ../index.php");
+    header("Location: ../student-loging.php");
  }

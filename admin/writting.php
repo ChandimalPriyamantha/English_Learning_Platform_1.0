@@ -166,7 +166,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_type'])) {
                     </div>
                 <?php } ?>
 
-                
+
 
                 <div class="card">
                     <div class="card-header bg-success text-white">
@@ -246,30 +246,64 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_type'])) {
                                                                 <tr>
                                                                     <th scope="col">ID</th>
                                                                     <th scope="col">Task Details</th>
-                                                                    <th scope="col">Created Date</th>
+                                                                    <th scope="col">Created Date & Time</th>
                                                                     <th scope="col">Due Date & Time</th>
                                                                     <th scope="col">State</th>
+                                                                    <th scope="col">Action</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr>
-                                                                    <td>1</td>
-                                                                    <td>My Country My Country My Country My Country My Country My Country My Country</td>
-                                                                    <td><i class="fas fa-info-circle me-2">02/01/2023</i></td>
+                                                                <?php
+                                                                include '../check-php/connection.php';
+                                                                $email_id = $_SESSION['email_id'];
+                                                                $sql = "SELECT * FROM wrtting_task where Email_ID='$email_id'";
+                                                                $result = mysqli_query($conn, $sql);
 
-                                                                    <td class="text-white"><i class="py-1 px-1 me-1 border border-warning rounded-3 d-flex align-items-center bg-success">10/01/2023 12:00 AM</i></td>
+                                                                if (mysqli_num_rows($result) > 0) {
+                                                                    // output data of each row
+                                                                    while ($row = mysqli_fetch_assoc($result)) {
 
-                                                                    <td>Active</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>2</td>
-                                                                    <td>My Country My Country</td>
-                                                                    <td><i class="fas fa-info-circle me-2">02/01/2023</i></td>
+                                                                        $id = $row["ID"];
+                                                                        $Task_Details = $row["Task_Details"];
+                                                                        $Created_date_time = $row["Created_date_time"];
+                                                                        $due_date = $row["Due_date"];
+                                                                        $due_time = $row['Due_time'];
+                                                                        $state = $row['State'];
 
-                                                                    <td class="text-white"><i class="py-1 px-1 me-1 border border-warning rounded-3 d-flex align-items-center bg-success">10/01/2023 12:00 AM</i></td>
 
-                                                                    <td>Active</td>
-                                                                </tr>
+                                                                ?>
+                                                                        <tr>
+                                                                            <td><?php echo $id ?> </td>
+                                                                            <td><?php echo $Task_Details ?></td>
+                                                                            <td><?php echo $Created_date_time ?></td>
+
+                                                                            <td class="py-2 px-3 me-2 border border-warning rounded-3 d-flex align-items-center bg-warning text-white"><?php echo $due_date . ' ' . $due_time ?></td>
+                                                                            <?php if ($state == 'Active') { ?>
+                                                                                <td class="text-success"><?php echo $state  ?></td>
+                                                                            <?php } else { ?>
+                                                                                <td class="text-danger"><?php echo $state  ?></td>
+                                                                            <?php } ?>
+                                                                            <td>
+
+                                                                                <a href="#!" class="text-info" data-mdb-toggle="tooltip" title="Edit Task"><i class="bi bi-pencil"></i></a>
+                                                                                <a href="#!" class="text-danger" data-mdb-toggle="tooltip" title="Delete Task"><i class="bi bi-trash2"></i></a>
+                                                                                <?php if ($state == 'Active') { ?>
+                                                                                    <a href="#!" class="text-success" data-mdb-toggle="tooltip" title="Deactive"><i class="bi bi-disc"></i></a>
+                                                                                <?php } else { ?>
+                                                                                    <a href="#!" class="text-danger" data-mdb-toggle="tooltip" title="Active"><i class="bi bi-disc"></i></a>
+                                                                                <?php } ?>
+                                                                            </td>
+
+
+                                                                    <?php }
+                                                                } else {
+                                                                    echo "<tr>";
+                                                                    echo "0 results";
+                                                                    echo "</tr>";
+                                                                }
+                                                                mysqli_close($conn);
+
+                                                                    ?>
                                                             </tbody>
                                                         </table>
                                                     </div>
